@@ -1,0 +1,40 @@
+To create a project: 
+    npx create-next-app@latest
+
+Adding styled-components:
+    npm install styled-components
+
+To set up a font:
+    // create a const with the font
+    const saira = Saira({
+        weights: [...],
+        subsets: [...],
+    })  <-- this will import from google fonts
+
+    // set the classname where the font will be used
+    className={saira.className}
+
+To use local storage:
+    // create a function that receives a key and a inital value
+    export function useLocalStorage(key: string, initialValue: T){}
+
+    // create a react hook
+    const [currValue, setValue] = useState(initalValue) // import from react
+
+    // use useEffect to make sure DOM is rendered before using local storage
+
+    // create an arrow function to update local storage value
+    const updateLocalStorage = (newValue: string) => {
+        setValue(newValue);
+        localStorage.setItem(key, JSON.stringfy(newValue))
+    }
+
+    // return the currValue and the set function
+    return {
+        currValue,
+        updateLocalStorage
+    }
+
+To set default providers:
+    // create a DefaultProviders component
+    // use the component on the page layout
