@@ -1,19 +1,19 @@
 
-
 import type { Metadata } from "next";
 import { Saira } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/header";
-
-const saira = Saira({ 
-  subsets: ["latin"],
-  weight: ['400', '500', '600'] 
-});
+import { DefaultPageLayout } from "./components/default-page-layout";
 
 export const metadata: Metadata = {
   title: "Computer force app",
   description: "Attempt no. 2",
 };
+
+const saira = Saira({
+  weight: ['300', '400', '500', '600'],
+  subsets: ['latin']
+})
 
 export default function RootLayout({
   children,
@@ -22,9 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={saira.className}>
+      <body>
         <Header/>
-        {children}
+        <DefaultPageLayout className={saira.className}>
+          {children}
+        </DefaultPageLayout>
       </body>
     </html>
   );
