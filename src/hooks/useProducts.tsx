@@ -1,7 +1,10 @@
-import { queryString } from "@/app/utils/graphiql"
+import { mountQuery } from "@/app/utils/graphiql"
 import { ProductFetchResponse } from "@/types/fetch-response"
 import { useQuery } from "@tanstack/react-query"
 import axios, { AxiosPromise } from "axios"
+import { useGalleryContext } from "./useGalleryContext"
+import { SortPriority } from "@/types/sort-priority"
+import { useDeferredValue } from "react"
 
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string
@@ -11,13 +14,19 @@ const fetcher = (queryString: string): AxiosPromise<ProductFetchResponse> => {
 }
 
 export function useProducts(){
+    const {category, priority, search} = useGalleryContext();
+    const deferredSearch = useDeferredValue(search).toLowerCase();
+    console.log(SortPriority[priority]);
+    const queryString = mountQuery(category, priority);
     const {data} = useQuery({
         queryFn:() => fetcher(queryString),
-        queryKey: ['product']
+        queryKey: ['product', category, priority]
     })
     console.log(data)
+    const products = data?.data?.data?.allProducts
+
     return {
         // useQuery data, axios data, GraphIQL data
-        product: data?.data?.data?.allProducts
+        product: products?.filter(product => product.name.toLowerCase().includes(deferredSearch))
     }
 }

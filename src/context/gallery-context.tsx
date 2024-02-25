@@ -9,7 +9,7 @@ export  const GalleryContext = createContext({
     setSearch: (value: string) => {},
     'page': 0,
     setPage: (value: number) => {},
-    'category': ProductCategory.ALL,
+    'category': ProductCategory.all,
     setCategory: (value: ProductCategory) => {},
     'priority': SortPriority.POPULARITY,
     setPriority: (value:  SortPriority) => {}    
@@ -22,7 +22,7 @@ interface GalleryContextProviderProps {
 export function GalleryContextProvider({children}: GalleryContextProviderProps){
     const [search, setSearch] = useState('')
     const [page, setPage] = useState(0)
-    const [category, setCategory] = useState(ProductCategory.ALL)
+    const [category, setCategory] = useState(ProductCategory.all)
     const [priority, setPriority] = useState(SortPriority.POPULARITY)
 
     return (

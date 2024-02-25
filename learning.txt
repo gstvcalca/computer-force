@@ -84,12 +84,12 @@ To create GraphIQL hook:
     // create Product type: must follow GraphIQL object model 
 
 
-    // All GraphIQL request are done using axios.post requests
+    // All GraphIQL requests are done using axios.post requests
     fetcher = axios.post<fetchType>(URL, {query: queryString})
     
     use react hook useQuery to cache results
     useQuery({
-        queryFn: fetcher,
+        queryFn:() => fetcher,
         queryKey: [...]
     })
 
@@ -98,3 +98,9 @@ To create GraphIQL hook:
     QueryFn is an axios request (axios.post) to GraphIQL, must be typed AxiosPromise<FetchResponse>
 
     useProduct calls useQuery which calls axios.post, which returns the data
+
+To filter gallery based on input value:
+    // Set an onChange={(event => setSearch(event.target.value))}
+    // At useProducts, use search=useDeferredValue(search)
+    // then filter the products array to get the items that includes the text
+    

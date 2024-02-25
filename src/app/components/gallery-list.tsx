@@ -5,9 +5,9 @@ import { FormatPrice } from './../utils/format-price';
 
 const GalleryContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, 256px);
+    grid-template-columns: repeat(auto-fill, 16em);
     justify-content: space-between;
-    gap: 32px;
+    gap: 2em;
     max-width: 100%;
     width: 100%;
 `

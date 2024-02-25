@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { ArrowIcon } from "./icons/Arrow-icon";
 import { useState } from "react";
+import { useGalleryContext } from "@/hooks/useGalleryContext";
+import { SortPriority } from "@/types/sort-priority";
 
 interface GalleryPriorityElementProps {
 }
 
 const PriorityButton = styled.button`
+    z-index: 999;
     border: none;
     background: none;
     display: flex;
@@ -28,6 +31,7 @@ const PriorityList = styled.ul`
     position: absolute;
     text-align: left;
     top: 110%;
+    border-radius: 5px;
 
 
     li {
@@ -52,15 +56,21 @@ export function GalleryPriority(props : GalleryPriorityElementProps){
     const handleIsOpen = () => {
         setIsOpen(!isOpen);
     }
+
+    const {setPriority} = useGalleryContext()
+
+    const handlePriority = (value: SortPriority) => {
+        setPriority(value)
+    }
     return(
         <PriorityListContainer>
             <PriorityButton onClick={handleIsOpen}>
                 Organizar por <ArrowIcon/>
                 {isOpen && <PriorityList>
-                    <li>Novidades</li>
-                    <li>Menor preço</li>
-                    <li>Maior preço</li>
-                    <li>Mais vendidos</li>
+                    <li onClick={() => handlePriority(SortPriority.NEWS)}>Novidades</li>
+                    <li onClick={() => handlePriority(SortPriority.SMALLEST)}>Menor preço</li>
+                    <li onClick={() => handlePriority(SortPriority.BIGGEST)}>Maior preço</li>
+                    <li onClick={() => handlePriority(SortPriority.POPULARITY)}>Mais vendidos</li>
                 </PriorityList>
                 }
             </PriorityButton>   

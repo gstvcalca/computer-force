@@ -20,8 +20,8 @@ const GalleryCardContainer = styled.div`
     backdrop-filter: blur(10px);
 
     img {
-        width: 256px;
-        height: 300px;
+        width: 16em;
+        height: 19em;
         border-radius: 8px 8px 0 0;
     }
 
@@ -35,7 +35,7 @@ const ProductName = styled.p`
     font-size: 16px;
     line-height: 24px;
     font-weight: 300px;
-    color: var(--text-dark);
+    color: var(--text-dark-2);
     margin: 8px 0;
 `
 const ProductPrice = styled.p`

@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import { SearchIcon } from './icons/search-icon';
 import { CartIcon } from './icons/cart-icon';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useGalleryContext } from '@/hooks/useGalleryContext';
 
 const saira = Saira_Stencil_One({ 
     subsets: ["latin"],
@@ -73,15 +74,19 @@ const CartIconContainer = styled.div`
         top: 50%;
     }
 `
+
 export function Header(){
     const {currValue} = useLocalStorage('cart-items', [])
-
+    const {search, setSearch} = useGalleryContext();
     return(
         <TagHeader>
             <h1 className={saira.className}>Computer Force</h1>
             <RightContainer>
                 <InputContainer>
-                    <Input placeholder="Procurando por algo específico?"></Input>
+                    <Input 
+                    onChange={(e) => setSearch(e.target.value)} 
+                    placeholder="Procurando por algo específico?"
+                    value={search}></Input>
                     <SearchIcon/>
                 </InputContainer>
                 <CartIconContainer>

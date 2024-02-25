@@ -1,6 +1,6 @@
 export enum SortPriority {
     'NEWS',
-    'BIGGEST',
     'SMALLEST', 
+    'BIGGEST',
     'POPULARITY'
 }
