@@ -4,6 +4,8 @@ import { Saira } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/header";
 import { DefaultPageLayout } from "./components/default-page-layout";
+import { GalleryContext, GalleryContextProvider } from "@/context/gallery-context";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const metadata: Metadata = {
   title: "Computer force app",
@@ -23,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header/>
-        <DefaultPageLayout className={saira.className}>
-          {children}
-        </DefaultPageLayout>
+          <GalleryContextProvider>
+            <Header/>
+            <DefaultPageLayout className={saira.className}>
+              {children}
+            </DefaultPageLayout>
+          </GalleryContextProvider>
       </body>
     </html>
   );

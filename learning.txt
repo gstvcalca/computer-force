@@ -38,3 +38,63 @@ To use local storage:
 To set default providers:
     // create a DefaultProviders component
     // use the component on the page layout
+
+To give components properties:
+    // declare an interface (or pass it directly in the declaration)
+    // type the component with the interface
+    const element = styled.element<myInterface>`...`
+
+    To use props:
+    ${props => props.property ? '' : ''}
+
+    // Remember to set the property on the tag
+    <Tag property={false}></Tag>
+
+To create a filter context:
+    // use react CreateContext
+    // dictionaries, keys=contexts, values=initialValue
+    // Must include setters
+    
+    // create a context provider
+    // it's a function that receives a children of type ReactNode
+    // uses react useState for each context variable
+    // and returns CreateContext.provider tag, passing a
+    // dictionary with the getters and setters through the "value"
+    // that contains "children"
+
+    // create a hook to use context
+    // it's a function that returns useContext(context) (from react)
+
+    // add the ContextProvider tag on the layout
+
+To enum:
+    export enum [name] { 'thing', 'another thing'}
+
+To use GraphIQL:
+    cd to directory
+    npm install //to install depedencies
+    npm start
+
+process.env.var must include http://
+
+To create GraphIQL hook:
+    npm intsall axios @tanstack/react-query //to install cashing libraries
+
+    // create FetchResponse type
+    // create Product type: must follow GraphIQL object model 
+
+
+    // All GraphIQL request are done using axios.post requests
+    fetcher = axios.post<fetchType>(URL, {query: queryString})
+    
+    use react hook useQuery to cache results
+    useQuery({
+        queryFn: fetcher,
+        queryKey: [...]
+    })
+
+    Product-list.tsx uses a hook to get the db data and a map to generate each product card
+    useProduct (the hook) uses a hook, useQuery({QueryFn, QueryKey}) to fetch the data
+    QueryFn is an axios request (axios.post) to GraphIQL, must be typed AxiosPromise<FetchResponse>
+
+    useProduct calls useQuery which calls axios.post, which returns the data
