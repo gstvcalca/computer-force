@@ -18,6 +18,7 @@ const TagHeader = styled.header`
     h1 {
         font-size: 3rem;
         color: #5D5D6D;
+        margin: 0.4em 0;
     }
 `
 const RightContainer = styled.div`
