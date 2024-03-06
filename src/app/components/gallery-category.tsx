@@ -32,7 +32,7 @@ export function GalleryCategories(){
     const handleChange = (value: ProductCategory) => {
         console.log(category)
         setCategory(value)
-    }
+    };
     return(
         <CategoriesListTag>
             <Category 

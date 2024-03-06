@@ -1,7 +1,7 @@
 import { ProductCategory } from "@/types/product-category";
 import { SortPriority } from "@/types/sort-priority";
 
-export function mountQuery(category: ProductCategory, priority: SortPriority){
+export function mountQuery(category: ProductCategory, priority: SortPriority, id: string=''){
     let filterString = ''
     if(category != ProductCategory.all){
         filterString = `, filter: {category: "${ProductCategory[category]}"}`
@@ -17,7 +17,23 @@ export function mountQuery(category: ProductCategory, priority: SortPriority){
                     description,
                     category,
                     price_in_cents,
-                    image_url
+                    image_url,
+                    id
                 }
             }`
+}
+
+export function SingleProductQuery(id: string){
+    return `
+    query {
+        Product(id: "${id}"){
+            name,
+            description,
+            category,
+            price_in_cents,
+            image_url,
+            created_at
+        }
+    }
+`
 }

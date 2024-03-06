@@ -4,6 +4,7 @@ import { ProductCategory } from "@/types/product-category";
 import { SortPriority } from "@/types/sort-priority";
 import { ReactNode, createContext, useState } from "react";
 
+
 export  const GalleryContext = createContext({
     'search': '',
     setSearch: (value: string) => {},
@@ -12,7 +13,7 @@ export  const GalleryContext = createContext({
     'category': ProductCategory.all,
     setCategory: (value: ProductCategory) => {},
     'priority': SortPriority.POPULARITY,
-    setPriority: (value:  SortPriority) => {}    
+    setPriority: (value:  SortPriority) => {},
 })
 
 interface GalleryContextProviderProps {
@@ -20,13 +21,17 @@ interface GalleryContextProviderProps {
 }
 
 export function GalleryContextProvider({children}: GalleryContextProviderProps){
-    const [search, setSearch] = useState('')
-    const [page, setPage] = useState(0)
-    const [category, setCategory] = useState(ProductCategory.all)
-    const [priority, setPriority] = useState(SortPriority.POPULARITY)
+    const [search, setSearch] = useState('');
+    const [page, setPage] = useState(0);
+    const [category, setCategory] = useState(ProductCategory.all);
+    const [priority, setPriority] = useState(SortPriority.POPULARITY);
 
     return (
-        <GalleryContext.Provider value={{search, setSearch, page, setPage, category, setCategory, priority, setPriority}}>
+        <GalleryContext.Provider value={{
+            search, setSearch, 
+            page, setPage, 
+            category, setCategory, 
+            priority, setPriority}}>
             {children}
         </GalleryContext.Provider>
     )

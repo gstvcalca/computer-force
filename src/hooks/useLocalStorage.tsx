@@ -1,7 +1,8 @@
+import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 
-export function useLocalStorage<T>(key: string, initialValue: T){
-    const [currValue, setValue] = useState(initialValue)
+export function useLocalStorage<T>(key: string, initialValue: Product[]){
+    const [cartItems, setValue] = useState(initialValue)
 
     
     useEffect(() => {
@@ -12,13 +13,13 @@ export function useLocalStorage<T>(key: string, initialValue: T){
         }, [window]
     )
 
-    const updateLocalStorage = (newValue: T) =>{
+    const updateLocalStorage = (newValue: Product[]) =>{
         setValue(newValue);
         localStorage.setItem(key, JSON.stringify(newValue));
     }
 
     return {
-        currValue,
+        cartItems,
         updateLocalStorage
     }
 }
