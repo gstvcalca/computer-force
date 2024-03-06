@@ -1,3 +1,10 @@
+## todos: 
+    - change to en
+    - responsivity
+    - create footer
+    - create contact me page
+    - remove lorem ipsum
+
 To create a project: 
     npx create-next-app@latest
 
@@ -104,3 +111,20 @@ To filter gallery based on input value:
     // At useProducts, use search=useDeferredValue(search)
     // then filter the products array to get the items that includes the text
     
+To navigate between pages:
+    use router.push(/product?id=id)
+
+To select quantity:
+    // On the page: 
+        function that deletes the item from the local storage: changeQuantity
+            Given the use of useState to manage the cart, React automatically re-renders all related components
+            on the page that uses it when it changes;
+        send the function via props: whole function, not a call for it;
+    // On the component:
+        function that calls the changeQuantity function: 
+            triggered onChange of the "Select" element, receives an event on its call. The event is of ChangeEvent,
+            and it is typed as the changes html tag
+
+
+        
+        
