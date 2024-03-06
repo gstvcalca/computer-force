@@ -16,7 +16,7 @@ export function GoBackBtn(){
     const router = useRouter();
     const handleChange = () => {
         router.push('/')
-    }
+    };
     return(
         <Btn onClick={() => handleChange()}>
             <GoBackIcon/>

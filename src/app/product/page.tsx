@@ -3,23 +3,28 @@
 import styled from "styled-components";
 import { GoBackBtn } from "../components/go-back-btn";
 import { CartIconWhite } from "../components/icons/cart-icon-white";
+import { FormatPrice } from "../utils/format-price";
+import { useProduct } from "@/hooks/useProduct";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { Product, modelProduct } from "@/types/product";
 
-interface ProductPageProps {
 
-}
 const MainContainer = styled.div`
     display: flex;
     gap: 2em;
     img {
         width: 50%;
+        border: 1px solid black;
     }
-`
+    height: 20em;
+    
+`;
 const RightSideContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-`
+`; 
 const CategoryP = styled.p`
     font-family: inherit;
     font-size: 1em;
@@ -29,7 +34,7 @@ const CategoryP = styled.p`
     text-align: left;
     text-transform: capitalize;
     color: var(--text-dark);
-`
+`;
 const TitleH1 = styled.h1`
     font-family: inherit;
     font-size: 2em;
@@ -39,7 +44,7 @@ const TitleH1 = styled.h1`
     text-align: left;
     color: var(--text-dark-2);
     font-style: bold;
-`
+`;
 const PrecoP = styled.p`
     font-family: inherit;
     font-size: 1.25em;
@@ -48,7 +53,7 @@ const PrecoP = styled.p`
     letter-spacing: 0em;
     text-align: left;
     color: var(--shapes-dark);
-`
+`;
 const FreteP = styled.p`
     font-family: inherit;
     font-size: 12px;
@@ -57,7 +62,7 @@ const FreteP = styled.p`
     letter-spacing: 0em;
     text-align: left;
     color: var(--text-dark-2);
-`
+`;
 const DescrTtlP = styled.p`
     font-family: inherit;
     font-size: 1em;
@@ -67,7 +72,7 @@ const DescrTtlP = styled.p`
     text-align: left;
     color: var(--text-dark);
     text-transform: uppercase;
-`
+`;
 const DescTxtP = styled.p`
     font-family: inherit;
     font-size: 14px;
@@ -76,7 +81,7 @@ const DescTxtP = styled.p`
     letter-spacing: 0em;
     text-align: left;
     color: var(--text-dark-2);
-`
+`;
 const AddToCartBtn = styled.button`
     align-items: center;
     background: var(--primary-blue);
@@ -90,25 +95,45 @@ const AddToCartBtn = styled.button`
     justify-content: center;
     max-width: 35em;
     text-transform: uppercase;
-`
+`;
 
-export default function ProductPage(props : ProductPageProps){
-    return(
+
+export default function ProductPage({searchParams}: {searchParams: {id: string}}){
+    const product: Product = useProduct(searchParams.id) ?? modelProduct;
+    const {cartItems, updateLocalStorage} = useLocalStorage('cart-items', [modelProduct]);
+
+    const handleAddToCart = () => {
+        if(cartItems.length && cartItems[0].id !== ""){
+            let productIndex = cartItems.findIndex((item => item.id === searchParams.id));
+            if(productIndex === -1){
+                cartItems.push({...product, quantity: 1, id: searchParams.id});
+                updateLocalStorage(cartItems);
+            }
+            else{
+                cartItems[productIndex].quantity = 1 + (cartItems[productIndex].quantity ?? 0);
+                updateLocalStorage(cartItems);
+            }
+        }
+        else{
+            updateLocalStorage([{...product, quantity: 1, id: searchParams.id}]);
+        }
+    }
+    return (
         <main>
             <section>
                 <GoBackBtn></GoBackBtn>
                 <MainContainer>
-                    <img src="https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-03.jpg"></img>
+                    <img src={product?.image_url} alt={product?.description}/>
                     <RightSideContainer>
                         <div>
-                            <CategoryP>caneca</CategoryP>
-                            <TitleH1>Caneca de cerâmica rústica</TitleH1>
-                            <PrecoP>R$ 40,00 </PrecoP>
+                            <CategoryP>{product?.category}</CategoryP>
+                            <TitleH1>{product?.name}</TitleH1>
+                            <PrecoP>{FormatPrice(product?.price_in_cents ?? 0)}</PrecoP>
                             <FreteP>*Frete de R$40,00 para todo o Brasil. Grátis para compras acima de R$900,00.</FreteP>
                             <DescrTtlP>descrição</DescrTtlP>
-                            <DescTxtP>Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.</DescTxtP>
+                            <DescTxtP>{product?.description}</DescTxtP>
                         </div>
-                        <AddToCartBtn>
+                        <AddToCartBtn onClick={handleAddToCart}>
                             <CartIconWhite/>
                             adicionar ao carrinho
                         </AddToCartBtn>

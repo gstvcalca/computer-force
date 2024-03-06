@@ -2,14 +2,17 @@
 
 import styled from "styled-components"
 import { Divider } from "./divider"
+import { useRouter } from "next/navigation"
+import { FormatPrice } from "../utils/format-price"
 
 
 interface GalleryCardProps {
     name: string,
-    price_in_cents: string,
+    price_in_cents: number,
     image_url: string,
     id: string,
-    description: string
+    description: string,
+    category: string,
 }
 
 const GalleryCardContainer = styled.div`
@@ -23,6 +26,7 @@ const GalleryCardContainer = styled.div`
         width: 16em;
         height: 19em;
         border-radius: 8px 8px 0 0;
+        cursor: pointer;
     }
 
     div {
@@ -44,13 +48,20 @@ const ProductPrice = styled.p`
     font-style: bold;
 `
 export function GalleryCard(props: GalleryCardProps){
+    const router = useRouter();
+    const handleNavigate = (id: string) => {
+        router.push('/product?id=' + id)
+    };
     return( 
         <GalleryCardContainer>
-            <img src={props.image_url} alt={props.description}></img>
+            <img 
+                src={props.image_url} 
+                alt={props.description}
+                onClick={() => handleNavigate(props.id)}></img>
             <div>
                 <ProductName>{props.name}</ProductName>
                 <Divider/>
-                <ProductPrice>{props.price_in_cents}</ProductPrice>
+                <ProductPrice>{FormatPrice(props.price_in_cents)}</ProductPrice>
             </div>
         </GalleryCardContainer>
     )

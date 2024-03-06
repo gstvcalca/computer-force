@@ -1,14 +1,14 @@
+"use client"
+
 import styled from "styled-components";
 import { ArrowIcon } from "./icons/Arrow-icon";
 import { useState } from "react";
 import { useGalleryContext } from "@/hooks/useGalleryContext";
 import { SortPriority } from "@/types/sort-priority";
 
-interface GalleryPriorityElementProps {
-}
 
 const PriorityButton = styled.button`
-    z-index: 999;
+    z-index: 900;
     border: none;
     background: none;
     display: flex;
@@ -50,18 +50,18 @@ const PriorityListContainer = styled.div`
     justify-content: end;
 `
 
-export function GalleryPriority(props : GalleryPriorityElementProps){
-    const [isOpen, setIsOpen] = useState(false)
+export function GalleryPriority(){
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleIsOpen = () => {
         setIsOpen(!isOpen);
-    }
+    };
 
-    const {setPriority} = useGalleryContext()
+    const {setPriority} = useGalleryContext();
 
     const handlePriority = (value: SortPriority) => {
         setPriority(value)
-    }
+    };
     return(
         <PriorityListContainer>
             <PriorityButton onClick={handleIsOpen}>
