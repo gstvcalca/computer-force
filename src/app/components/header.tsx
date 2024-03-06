@@ -6,6 +6,7 @@ import { SearchIcon } from './icons/search-icon';
 import { CartIcon } from './icons/cart-icon';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useGalleryContext } from '@/hooks/useGalleryContext';
+import { useRouter } from 'next/navigation';
 
 const saira = Saira_Stencil_One({ 
     subsets: ["latin"],
@@ -13,13 +14,21 @@ const saira = Saira_Stencil_One({
   });
 
 const TagHeader = styled.header`
-    padding: 0 5em;
     display: flex;
+    position: fixed;
+    top: 0;
     justify-content: space-between;
+    width: 100%;
+    max-width: 100vw;
+    background-color: white;
+    z-index: 999;
+    box-sizing: border-box;
+    padding: 0 5em 0 7em;
+    height: 5em;
     h1 {
         font-size: 3rem;
         color: #5D5D6D;
-        margin: 0.4em 0;
+        margin: 0;
     }
 `
 const RightContainer = styled.div`
@@ -54,6 +63,7 @@ const Input = styled.input`
 const CartIconContainer = styled.div`
     display: flex;
     position: relative;
+    cursor: pointer;
 
     span {
         display: flex;
@@ -76,22 +86,23 @@ const CartIconContainer = styled.div`
 `
 
 export function Header(){
-    const {currValue} = useLocalStorage('cart-items', [])
+    const {cartItems} = useLocalStorage('cart-items', []);
     const {search, setSearch} = useGalleryContext();
+    const router = useRouter();
     return(
         <TagHeader>
             <h1 className={saira.className}>Computer Force</h1>
             <RightContainer>
                 <InputContainer>
                     <Input 
-                    onChange={(e) => setSearch(e.target.value)} 
+                    onChange={(e: {target: {value: string}}) => setSearch(e.target.value)} 
                     placeholder="Procurando por algo específico?"
                     value={search}></Input>
                     <SearchIcon/>
                 </InputContainer>
-                <CartIconContainer>
+                <CartIconContainer onClick={() => {router.push('/cart')}}>
                     <CartIcon/>
-                    {currValue.length > 0 && <span>{currValue.length}</span>}
+                    {cartItems.length > 0 && <span>{cartItems.length}</span>}
                 </CartIconContainer>
             </RightContainer>
         </TagHeader>
