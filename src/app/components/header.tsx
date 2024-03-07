@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Saira_Stencil_One } from 'next/font/google';
 import { styled } from 'styled-components';

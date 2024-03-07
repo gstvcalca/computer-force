@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import { ProductCategory } from "@/types/product-category";
 import { SortPriority } from "@/types/sort-priority";
 import { ReactNode, createContext, useState } from "react";
 
 
-export  const GalleryContext = createContext({
+export const GalleryContext = createContext({
     'search': '',
     setSearch: (value: string) => {},
     'page': 0,

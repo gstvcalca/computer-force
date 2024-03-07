@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Product } from "@/types/product"
 import styled from "styled-components";
@@ -82,7 +82,6 @@ export function ProductCartCard(props: ProductCartCard){
     const handleQttChange = (e: ChangeEvent<HTMLSelectElement>) => {
         props.changeQuantity(props.id, Number(e.target.value));
     }
-    console.log(props);
     return(
         <ComponentContainer>
             <img src={props.image_url} alt={props.description}/>

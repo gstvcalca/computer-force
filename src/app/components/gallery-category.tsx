@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useGalleryContext } from "@/hooks/useGalleryContext";
 import { ProductCategory } from "@/types/product-category";
@@ -30,8 +30,7 @@ const CategoriesListTag = styled.ul`
 export function GalleryCategories(){
     const {category, setCategory} = useGalleryContext();
     const handleChange = (value: ProductCategory) => {
-        console.log(category)
-        setCategory(value)
+        setCategory(value);
     };
     return(
         <CategoriesListTag>

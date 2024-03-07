@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useProducts } from "@/hooks/useProducts"
 import { GalleryCard } from "./gallery-card"

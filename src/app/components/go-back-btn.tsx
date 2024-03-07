@@ -1,3 +1,5 @@
+"use client";
+
 import { styled } from 'styled-components';
 import { GoBackIcon } from './icons/go-back-icon';
 import { useRouter } from 'next/navigation';
