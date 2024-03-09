@@ -15,8 +15,8 @@ const MainContainer = styled.div`
     img {
         width: 50%;
         border: 1px solid black;
+        max-height: 33em;
     }
-    height: 20em;
     
 `;
 const RightSideContainer = styled.div`
@@ -129,13 +129,13 @@ export default function ProductPage({searchParams}: {searchParams: {id: string}}
                             <CategoryP>{product?.category}</CategoryP>
                             <TitleH1>{product?.name}</TitleH1>
                             <PrecoP>{FormatPrice(product?.price_in_cents ?? 0)}</PrecoP>
-                            <FreteP>*Frete de R$40,00 para todo o Brasil. Grátis para compras acima de R$900,00.</FreteP>
-                            <DescrTtlP>descrição</DescrTtlP>
+                            <FreteP>*Delivery anywhere in Sydney for $40.00. Free delivery for purchases above $900.00.</FreteP>
+                            <DescrTtlP>Description</DescrTtlP>
                             <DescTxtP>{product?.description}</DescTxtP>
                         </div>
                         <AddToCartBtn onClick={handleAddToCart}>
                             <CartIconWhite/>
-                            adicionar ao carrinho
+                            Add to cart
                         </AddToCartBtn>
                     </RightSideContainer>
                 </MainContainer>

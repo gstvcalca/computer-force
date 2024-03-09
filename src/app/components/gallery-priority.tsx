@@ -65,7 +65,7 @@ export function GalleryPriority(){
     return(
         <PriorityListContainer>
             <PriorityButton onClick={handleIsOpen}>
-                Organizar por <ArrowIcon/>
+                Sort by <ArrowIcon/>
                 {isOpen && <PriorityList>
                     <li onClick={() => handlePriority(SortPriority.NEWS)}>Novidades</li>
                     <li onClick={() => handlePriority(SortPriority.SMALLEST)}>Menor preço</li>

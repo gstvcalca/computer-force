@@ -57,9 +57,9 @@ export default function CartPage(){
             <GoBackBtn/>
             <PageContainer>
                 <ListContainer>
-                    <h2>SEU CARRINHO</h2>
+                    <h2>Your items</h2>
                     <CustomSpan custom_weight="400">Total </CustomSpan>
-                    <CustomSpan custom_weight="300">({cartItems.length} produtos)</CustomSpan>
+                    <CustomSpan custom_weight="300">({cartItems.length} items)</CustomSpan>
                     <CustomSpan custom_weight="500"> {FormatPrice(products_subtotal)}</CustomSpan>
                     {cartItems.map(item => <ProductCartCard key={item.id}
                     name={item.name}

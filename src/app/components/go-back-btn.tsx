@@ -22,7 +22,7 @@ export function GoBackBtn(){
     return(
         <Btn onClick={() => handleChange()}>
             <GoBackIcon/>
-            Voltar
+            Go back
         </Btn>
     )
 }

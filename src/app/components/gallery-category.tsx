@@ -36,13 +36,13 @@ export function GalleryCategories(){
         <CategoriesListTag>
             <Category 
                 selected={category === ProductCategory.all}
-                onClick={() => handleChange(ProductCategory.all)}>Todos os produtos</Category>
+                onClick={() => handleChange(ProductCategory.all)}>All</Category>
             <Category 
                 selected={category === ProductCategory["t-shirts"]}
-                onClick={() => handleChange(ProductCategory["t-shirts"])}>Camisetas</Category>
+                onClick={() => handleChange(ProductCategory["t-shirts"])}>T-Shirts</Category>
             <Category 
                 selected={category === ProductCategory.mugs}
-                onClick={() => handleChange(ProductCategory.mugs)}>Canecas</Category>
+                onClick={() => handleChange(ProductCategory.mugs)}>Mugs</Category>
         </CategoriesListTag>
     )
 }

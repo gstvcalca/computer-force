@@ -25,11 +25,23 @@ const TagHeader = styled.header`
     box-sizing: border-box;
     padding: 0 5em 0 7em;
     height: 5em;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
     h1 {
-        font-size: 3rem;
+        font-size: 1.5rem;
         color: #5D5D6D;
         margin: 0;
+        
+        @media (min-width: ${props => props.theme.DesktopBreakpoint}){
+            font-size: 3rem;
+        }
+    
+    @media (min-width: ${props => props.theme.TabletBreakpoint}){
+        flex-direction: row;
     }
+    }
+
 `
 const RightContainer = styled.div`
     display: flex;
@@ -96,7 +108,7 @@ export function Header(){
                 <InputContainer>
                     <Input 
                     onChange={(e: {target: {value: string}}) => setSearch(e.target.value)} 
-                    placeholder="Procurando por algo específico?"
+                    placeholder="Looking for something?"
                     value={search}></Input>
                     <SearchIcon/>
                 </InputContainer>

@@ -1,6 +1,7 @@
 ## todos: 
-    - change to en
+    - change to en - done
     - responsivity
+    
     - create footer
     - create contact me page
     - remove lorem ipsum

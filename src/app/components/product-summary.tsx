@@ -73,13 +73,13 @@ export function ProductSummary(props: ProductSummaryProps){
     let delivery_fee = 4000;
     return(
         <SummaryContainer>
-            <h3>RESUMO DO PEDIDO</h3>
+            <h3>CHECKOUT SUMMARY</h3>
             <DivSpaceBetween>
-                <span>Subtotal dos produtos</span>
+                <span>Subtotal</span>
                 <span>{FormatPrice(props.products_subtotal)}</span>
             </DivSpaceBetween>
             <DivSpaceBetween>
-                <span>Entrega</span>
+                <span>Delivery</span>
                 <span>{FormatPrice(delivery_fee)}</span>
             </DivSpaceBetween>
             <Divider/>
@@ -87,11 +87,11 @@ export function ProductSummary(props: ProductSummaryProps){
                 <BoldSpan>Total</BoldSpan>
                 <BoldSpan>{FormatPrice(delivery_fee + props.products_subtotal)}</BoldSpan>
             </DivSpaceBetween>
-            <PurchaseBtn>finalizar compra</PurchaseBtn>
-            <CustomAnchor href='/'>Ajuda</CustomAnchor>
-            <CustomAnchor href='/'>Reembolsos</CustomAnchor>
-            <CustomAnchor href="/">entregas e frete</CustomAnchor>
-            <CustomAnchor href="/">trocas e devoluções</CustomAnchor>
+            <PurchaseBtn>purchase</PurchaseBtn>
+            <CustomAnchor href='/'>Help</CustomAnchor>
+            <CustomAnchor href='/'>Refunds</CustomAnchor>
+            <CustomAnchor href="/">Delivery and freight</CustomAnchor>
+            <CustomAnchor href="/">exchanges and returns</CustomAnchor>
         </SummaryContainer>
     )
 }
