@@ -17,17 +17,18 @@ const TagHeader = styled.header`
     display: flex;
     position: fixed;
     top: 0;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 100vw;
     background-color: white;
     z-index: 999;
     box-sizing: border-box;
-    padding: 0 5em 0 7em;
-    height: 5em;
+    padding: 1em;
     overflow: hidden;
-    align-items: center;
+    gap: 1em;
     flex-direction: column;
+    min-width: 500px;
     h1 {
         font-size: 1.5rem;
         color: #5D5D6D;
@@ -36,11 +37,21 @@ const TagHeader = styled.header`
         @media (min-width: ${props => props.theme.DesktopBreakpoint}){
             font-size: 3rem;
         }
-    
+    }
     @media (min-width: ${props => props.theme.TabletBreakpoint}){
         flex-direction: row;
+        padding: 1em 5em 1em 7em;
+        justify-content: space-between;
+        align-items: center;
     }
+
+    @media (min-width: ${props => props.theme.DesktopBreakpoint}){
+        flex-direction: row;
+        padding: 0 5em 0 7em;
+        justify-content: space-between;
+        align-items: center;
     }
+    
 
 `
 const RightContainer = styled.div`
