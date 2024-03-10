@@ -119,7 +119,7 @@ export function Header(){
     const router = useRouter();
     return(
         <TagHeader>
-            <h1 className={saira.className}><a href="/">Computer Force</a></h1>
+            <h1 className={saira.className}><a href="/">caputteeno</a></h1>
             <RightContainer>
                 <InputContainer>
                     <Input 

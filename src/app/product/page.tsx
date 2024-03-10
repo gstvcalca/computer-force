@@ -6,7 +6,7 @@ import { CartIconWhite } from "../components/icons/cart-icon-white";
 import { FormatPrice } from "../utils/format-price";
 import { useProduct } from "@/hooks/useProduct";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { Product, modelProduct } from "@/types/product";
+import { Product } from "@/types/product";
 
 
 const MainContainer = styled.div`
@@ -118,12 +118,12 @@ const AddToCartBtn = styled.button`
 
 
 export default function ProductPage({searchParams}: {searchParams: {id: string}}){
-    const product: Product = useProduct(searchParams.id) ?? modelProduct;
-    const {cartItems, updateLocalStorage} = useLocalStorage('cart-items', [modelProduct]);
+    const product = useProduct(searchParams.id);
+    const {cartItems, updateLocalStorage} = useLocalStorage<Product[]>('cart-items', []);
 
     const handleAddToCart = () => {
-        if(cartItems.length && cartItems[0].id !== ""){
-            let productIndex = cartItems.findIndex((item => item.id === searchParams.id));
+        if(cartItems && product){
+            let productIndex = cartItems.findIndex(((item: {id: string}) => item.id === searchParams.id));
             if(productIndex === -1){
                 cartItems.push({...product, quantity: 1, id: searchParams.id});
                 updateLocalStorage(cartItems);
@@ -133,7 +133,7 @@ export default function ProductPage({searchParams}: {searchParams: {id: string}}
                 updateLocalStorage(cartItems);
             }
         }
-        else{
+        else if(product){
             updateLocalStorage([{...product, quantity: 1, id: searchParams.id}]);
         }
     }

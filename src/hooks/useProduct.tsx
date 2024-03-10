@@ -9,7 +9,7 @@ const fetcher = (queryString: string): AxiosPromise<SingleFetchResponse> => {
     return axios.post(API_URL, {query: queryString})
 }
 
-export function useProduct(id: string){
+export function useProduct<T>(id: string){
     const {data} = useQuery({
         queryFn: () => fetcher(SingleProductQuery(id)),
         queryKey: ['product', id],
@@ -17,4 +17,4 @@ export function useProduct(id: string){
         staleTime: 1000 * 60 * 5
     })
     return data?.data?.data?.Product
-}
+};
