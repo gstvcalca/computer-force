@@ -2,8 +2,8 @@
     - change to en - done
     - responsivity
     
-    - create footer
-    - create contact me page
+    - create footer - done
+    - create contact me page - done
     - remove lorem ipsum
 
 To create a project: 
