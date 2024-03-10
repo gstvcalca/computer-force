@@ -32,7 +32,7 @@ const PriorityList = styled.ul`
     text-align: left;
     top: 110%;
     border-radius: 5px;
-
+    border: 1px solid var(--border-color);
 
     li {
         color: var(--text-dark);
@@ -48,6 +48,7 @@ const PriorityListContainer = styled.div`
     width: 10em;
     align-items: center;
     justify-content: end;
+    
 `
 
 export function GalleryPriority(){
@@ -67,10 +68,10 @@ export function GalleryPriority(){
             <PriorityButton onClick={handleIsOpen}>
                 Sort by <ArrowIcon/>
                 {isOpen && <PriorityList>
-                    <li onClick={() => handlePriority(SortPriority.NEWS)}>Novidades</li>
-                    <li onClick={() => handlePriority(SortPriority.SMALLEST)}>Menor preço</li>
-                    <li onClick={() => handlePriority(SortPriority.BIGGEST)}>Maior preço</li>
-                    <li onClick={() => handlePriority(SortPriority.POPULARITY)}>Mais vendidos</li>
+                    <li onClick={() => handlePriority(SortPriority.NEWS)}>News</li>
+                    <li onClick={() => handlePriority(SortPriority.SMALLEST)}>Price: smallest price</li>
+                    <li onClick={() => handlePriority(SortPriority.BIGGEST)}>Price: biggest</li>
+                    <li onClick={() => handlePriority(SortPriority.POPULARITY)}>Best sellers</li>
                 </PriorityList>
                 }
             </PriorityButton>   

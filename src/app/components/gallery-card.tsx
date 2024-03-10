@@ -21,10 +21,11 @@ const GalleryCardContainer = styled.div`
     width: 256px;
     background-color: rgba(255, 255, 255, 0.389);
     backdrop-filter: blur(10px);
-
+    border: .5px solid var(--border-color);
+    border-radius: 8px;
     img {
         width: 16em;
-        height: 19em;
+        height: 17em;
         border-radius: 8px 8px 0 0;
         cursor: pointer;
     }
@@ -40,10 +41,10 @@ const ProductName = styled.p`
     line-height: 24px;
     font-weight: 300px;
     color: var(--text-dark-2);
-    margin: 8px 0;
+    margin: 8px 0 3px 0;
 `
 const ProductPrice = styled.p`
-    margin: 8px 0;
+    margin: 0 0 3px 0;
     font-weight: 600;
     font-style: bold;
 `
