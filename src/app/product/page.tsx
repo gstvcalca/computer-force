@@ -146,7 +146,7 @@ export default function ProductPage({searchParams}: {searchParams: {id: string}}
                     <RightSideContainer>
                         <div>
                             
-                            <TitleH1>{product?.name}</TitleH1><CategoryP> ({product?.category})</CategoryP>
+                            <TitleH1>{product?.name}</TitleH1>
                             <PrecoP>{FormatPrice(product?.price_in_cents ?? 0)}</PrecoP>
                             <FreteP>*Delivery anywhere in Sydney for $40.00. Free delivery for purchases above $900.00.</FreteP>
                             <DescrTtlP>Description</DescrTtlP>

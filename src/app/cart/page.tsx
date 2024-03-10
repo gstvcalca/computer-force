@@ -2,11 +2,12 @@
 
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { GoBackBtn } from "../components/go-back-btn";
-import { modelProduct } from "@/types/product";
 import styled from "styled-components";
 import { FormatPrice } from './../utils/format-price';
 import { ProductCartCard } from "../components/product-cart-card";
 import { ProductSummary } from "../components/product-summary";
+import { Product } from "@/types/product";
+import { useRouter } from "next/navigation";
 
 
 const PageContainer = styled.div`
@@ -41,7 +42,8 @@ const ListContainer = styled.div`
     }
 `
 export default function CartPage(){
-    const {cartItems, updateLocalStorage} = useLocalStorage('cart-items', [modelProduct]);
+    const router = useRouter();
+    const {cartItems, updateLocalStorage} = useLocalStorage<Product[]>('cart-items', []);
     const handleDelete = (id: string) => {
         let newValue = cartItems.filter(item => item.id !== id);
         updateLocalStorage(newValue);
@@ -54,6 +56,12 @@ export default function CartPage(){
         });
         console.log(newValue);
         updateLocalStorage(newValue);
+    }
+
+    const effectPurchase = () => {
+        updateLocalStorage([]);
+        alert("Items purchased successfully! Thanks for shopping with us.");
+        router.push('/');
     }
     let products_subtotal = cartItems.reduce((sum, item) => sum += (item.price_in_cents * (item.quantity ?? 0)), 0);
     
@@ -77,7 +85,7 @@ export default function CartPage(){
                     changeQuantity={changeQuantity}
                     quantity={Number(item.quantity)}/>)}
                 </ListContainer>
-                <ProductSummary products_subtotal={products_subtotal}/>
+                <ProductSummary products_subtotal={products_subtotal} effectPurchase={effectPurchase}/>
             </PageContainer>
         </div>
     )

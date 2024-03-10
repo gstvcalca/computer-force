@@ -16,13 +16,3 @@ export interface ProductFetchResponse {
 export interface SingleFetchResponse {
     data: {Product: Product}
 }
-
-export const modelProduct = {
-    name: '',
-    id: '',
-    image_url: '',
-    category: '',
-    price_in_cents: 0,
-    description: '',
-    quantity: 0 
-}

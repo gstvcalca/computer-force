@@ -79,11 +79,16 @@ const CustomAnchor = styled.a`
     `
 
 interface ProductSummaryProps{
-    products_subtotal: number
+    products_subtotal: number,
+    effectPurchase: () => void
 }
 
 export function ProductSummary(props: ProductSummaryProps){
+    const handlePurchase = () => {
+        props.effectPurchase();
+    }
     let delivery_fee = 4000;
+    
     return(
         <SummaryContainer>
             <h3>CHECKOUT SUMMARY</h3>
@@ -100,7 +105,7 @@ export function ProductSummary(props: ProductSummaryProps){
                 <BoldSpan>Total</BoldSpan>
                 <BoldSpan>{FormatPrice(delivery_fee + props.products_subtotal)}</BoldSpan>
             </DivSpaceBetween>
-            <PurchaseBtn>purchase</PurchaseBtn>
+            <PurchaseBtn onClick={() => handlePurchase()}>purchase</PurchaseBtn>
             <CustomAnchor href='/'>Help</CustomAnchor>
             <CustomAnchor href='/'>Refunds</CustomAnchor>
             <CustomAnchor href="/">Delivery and freight</CustomAnchor>

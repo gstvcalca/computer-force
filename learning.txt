@@ -1,11 +1,3 @@
-## todos: 
-    - change to en - done
-    - responsivity
-    
-    - create footer - done
-    - create contact me page - done
-    - remove lorem ipsum
-
 To create a project: 
     npx create-next-app@latest
 
