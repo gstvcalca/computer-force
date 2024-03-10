@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "./components/header";
 import { DefaultPageLayout } from "./components/default-page-layout";
 import { DefaultPageProviders } from "./components/default-page-providers";
+import { Footer } from "./components/footer";
 
 const saira = Saira({
   weight: ['300', '400', '500', '600'],
@@ -24,6 +25,7 @@ export default function RootLayout({
           <DefaultPageLayout>
             {children}
           </DefaultPageLayout>
+          <Footer/>
         </DefaultPageProviders>
       </body>
     </html>

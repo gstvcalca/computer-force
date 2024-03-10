@@ -29,6 +29,7 @@ const TagHeader = styled.header`
     gap: 1em;
     flex-direction: column;
     min-width: 500px;
+    border-bottom: 1px solid var(--border-color);
     h1 {
         font-size: 1.5rem;
         color: #5D5D6D;

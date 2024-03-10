@@ -12,6 +12,7 @@ const GalleryContainer = styled.div`
     gap: 2em;
     max-width: 100%;
     width: 100%;
+    padding-bottom: 2em;
 
     @media(min-width: ${props => props.theme.TabletBreakpoint}){
         justify-content: space-between;
