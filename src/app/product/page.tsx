@@ -11,21 +11,31 @@ import { Product, modelProduct } from "@/types/product";
 
 const MainContainer = styled.div`
     display: flex;
+    flex-direction: column;
     gap: 2em;
+    align-items: center;
     img {
-        width: 50%;
-        border: 1px solid black;
+        width: 80%;
+        border: 1px solid var(--border-color);
         max-height: 33em;
+        border-radius: .3em;
     }
+    padding-bottom: 1em;
     
+    @media(min-width: ${props => props.theme.DesktopBreakpoint}){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: normal;
+    }
 `;
 const RightSideContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 `; 
-const CategoryP = styled.p`
+const CategoryP = styled.span`
     font-family: inherit;
     font-size: 1em;
     font-weight: 400;
@@ -34,8 +44,12 @@ const CategoryP = styled.p`
     text-align: left;
     text-transform: capitalize;
     color: var(--text-dark);
+    margin: 0;
+    padding: 0;
 `;
+
 const TitleH1 = styled.h1`
+    display: inline-block;
     font-family: inherit;
     font-size: 2em;
     font-weight: 300;
@@ -44,15 +58,17 @@ const TitleH1 = styled.h1`
     text-align: left;
     color: var(--text-dark-2);
     font-style: bold;
-`;
+    padding: 0;
+    margin: 0;
+`
 const PrecoP = styled.p`
     font-family: inherit;
     font-size: 1.25em;
     font-weight: 600;
     line-height: 30px;
-    letter-spacing: 0em;
     text-align: left;
     color: var(--shapes-dark);
+    margin: 0;
 `;
 const FreteP = styled.p`
     font-family: inherit;
@@ -83,19 +99,22 @@ const DescTxtP = styled.p`
     color: var(--text-dark-2);
 `;
 const AddToCartBtn = styled.button`
+    display: flex;
     align-items: center;
+    justify-content: center;
     background: var(--primary-blue);
     border: none;
     border-radius: 4px;
     color: white;
     cursor: pointer;
-    display: flex;
     gap: 12px;
     height: 3em;
-    justify-content: center;
+    width: 100%;
     max-width: 35em;
     text-transform: uppercase;
-`;
+    padding: .1em 1em;
+    margin: auto;   
+`
 
 
 export default function ProductPage({searchParams}: {searchParams: {id: string}}){
@@ -126,8 +145,8 @@ export default function ProductPage({searchParams}: {searchParams: {id: string}}
                     <img src={product?.image_url} alt={product?.description}/>
                     <RightSideContainer>
                         <div>
-                            <CategoryP>{product?.category}</CategoryP>
-                            <TitleH1>{product?.name}</TitleH1>
+                            
+                            <TitleH1>{product?.name}</TitleH1><CategoryP> ({product?.category})</CategoryP>
                             <PrecoP>{FormatPrice(product?.price_in_cents ?? 0)}</PrecoP>
                             <FreteP>*Delivery anywhere in Sydney for $40.00. Free delivery for purchases above $900.00.</FreteP>
                             <DescrTtlP>Description</DescrTtlP>

@@ -7,12 +7,17 @@ import styled from "styled-components";
 import { FormatPrice } from './../utils/format-price';
 import { ProductCartCard } from "../components/product-cart-card";
 import { ProductSummary } from "../components/product-summary";
-import { ChangeEvent } from "react";
 
 
 const PageContainer = styled.div`
     display: flex;
-    gap: 2.5em;
+    gap: 1em;
+    flex-direction: column;
+
+    @media(min-width: ${props => props.theme.DesktopBreakpoint}){
+        flex-direction: row;
+        gap: 2.5em; 
+    }
 `
 
 const CustomSpan = styled.span<{custom_weight: number}>`

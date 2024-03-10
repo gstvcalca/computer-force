@@ -15,10 +15,13 @@ const SummaryContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     background-color: white;
-    padding: 1em 1.5em;
-    width: 35%;
+    width: 100%;
     border-radius: .5em;
     height: 100%;
+    margin: 0;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-bottom: 1em;
 
     h3 {
         text-align: left;
@@ -28,6 +31,12 @@ const SummaryContainer = styled.div`
         line-height: 30px;
         color: var(--text-dark-2);
         margin: .6em 0;
+    }
+
+    @media(min-width: ${props => props.theme.DesktopBreakpoint}){
+        width: 35%;
+        padding: 1em 1.5em;
+        margin: 1em 0;
     }
 `
 const BoldSpan = styled.span`
@@ -47,12 +56,16 @@ const PurchaseBtn = styled.button`
     border-radius: .2em;
     align-self: center;
     margin-top: 3em;
-    margin-bottom: 40%;
+    margin-bottom: 10%;
     border: none;
     font-size: 1em;
     font-family: inherit;
     align-items: center;
     font-weight: 500;
+
+    @media(min-width: ${props => props.theme.DesktopBreakpoint}){
+        margin-bottom: 35%;
+    }
 `
 const CustomAnchor = styled.a`
     color: var(--text-dark);
