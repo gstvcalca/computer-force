@@ -9,7 +9,7 @@ export function mountQuery(category: ProductCategory, priority: SortPriority, id
 
     let sortField = ['created_at', 'price_in_cents', 'price_in_cents', 'sales'][priority];
     let sortOrder = ['DSC', 'ASC', 'DSC', 'DSC'][priority];
-    let sortString = `(sortField: "${sortField}", sortOrder: "${sortOrder}"${filterString})`;
+    let sortString = `(page: 0, perPage: 12, sortField: "${sortField}", sortOrder: "${sortOrder}"${filterString})`;
 
     return `query {
                 allProducts${sortString}{
