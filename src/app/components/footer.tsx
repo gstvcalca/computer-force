@@ -1,10 +1,9 @@
 "use client";
 
 import styled from "styled-components";
-import { FacebookIcon } from "./icons/facebook-icon";
-import { GithubIcon } from "./icons/github-icon";
-import { InstagramIcon } from "./icons/instagram-icon";
+
 import { useRouter } from "next/navigation";
+import { SocialMedia } from "./social-media";
 
 
 const FooterTag = styled.section`
@@ -20,28 +19,16 @@ const FooterTag = styled.section`
         cursor: pointer;
         color: var(--bg-primary);
     }
-    svg {
-        margin: 0 2em;
-    }
-    button {
-        cursor: pointer;
-        border: none;
-        background: none;
-    }
 `
 
 export function Footer(){
     const router = useRouter()
-    const handleNavigate = (url: string) => {
-        router.push(url);
-    }
+    
     return(
         <FooterTag>
             <h3>ABOUT US</h3>
             <p>We are the best online store for computer parts!</p>
-            <button onClick={() => handleNavigate("https://www.facebook.com")}><FacebookIcon/></button>
-            <button onClick={() => handleNavigate("https://www.github.com")}><GithubIcon/></button>
-            <button onClick={() => handleNavigate("https://www.instagram.com")}><InstagramIcon/></button>
+            <SocialMedia/>
             <p>
                 <a href="/contact">Contact us</a><br/>
                 © 2024 Copyright: all rights reserved

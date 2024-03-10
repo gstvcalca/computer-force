@@ -39,6 +39,10 @@ const TagHeader = styled.header`
             font-size: 3rem;
         }
     }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
     @media (min-width: ${props => props.theme.TabletBreakpoint}){
         flex-direction: row;
         padding: 1em 5em 1em 7em;
@@ -115,7 +119,7 @@ export function Header(){
     const router = useRouter();
     return(
         <TagHeader>
-            <h1 className={saira.className}>Computer Force</h1>
+            <h1 className={saira.className}><a href="/">Computer Force</a></h1>
             <RightContainer>
                 <InputContainer>
                     <Input 
