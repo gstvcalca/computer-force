@@ -7,11 +7,11 @@ export function useLocalStorage<T>(key: string, initialValue: T){
     
     useEffect(() => {
             // undefined window means no access to localStorage
-            if (typeof window === 'undefined') return;
+            if (typeof window !== 'undefined') { 
             let value = localStorage.getItem(key);
             if (value) setValue(JSON.parse(value))
-        }, [window]
-    )
+    }}, [window]
+    );
 
     const updateLocalStorage = (newValue: T) =>{
         setValue(newValue);

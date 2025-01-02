@@ -77,7 +77,7 @@ const InputContainer = styled.div`
     }
 `
 
-const Input = styled.input`
+const CustomInput = styled.input`
     width: 22em;
     height: 3em;
     border-radius: .6em;
@@ -121,11 +121,11 @@ export function Header(){
         <TagHeader>
             <h1 className={saira.className}><a href="/">caputteeno</a></h1>
             <RightContainer>
-                <InputContainer>
-                    <Input 
-                    onChange={(e: {target: {value: string}}) => setSearch(e.target.value)} 
+            <InputContainer>
+                <CustomInput 
+                     onChange={(e: {target: {value: string}}) => setSearch(e.target.value)}
                     placeholder="Looking for something?"
-                    value={search}></Input>
+                    value={search}></CustomInput>
                     <SearchIcon/>
                 </InputContainer>
                 <CartIconContainer onClick={() => {router.push('/cart')}}>
