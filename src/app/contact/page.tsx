@@ -105,7 +105,7 @@ export default function ContactPage(){
                         <CstInput type="mail" placeholder="E-mail"/>
                     </InputContainer>
                     <InputContainer>
-                        <CstTxtArea rows="6" cols="3" placeholder="Message"></CstTxtArea>
+                        <CstTxtArea placeholder="Message"></CstTxtArea>
                     </InputContainer>
                     <SubmitBtn type="submit" value="Submit message"/>
                 </CstForm>
