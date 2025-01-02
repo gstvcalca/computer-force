@@ -21,7 +21,7 @@ const PageContainer = styled.div`
     }
 `
 
-const CustomSpan = styled.span<{custom_weight: number}>`
+const CustomSpan = styled.span<{custom_weight: string}>`
     font-family: inherit;
     font-size: 16px;
     font-weight: ${props => props.custom_weight};
