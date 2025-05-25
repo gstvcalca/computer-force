@@ -1,12 +1,12 @@
 "use client"
 
 import styled from "styled-components";
-import { GoBackBtn } from "../components/go-back-btn";
-import { CartIconWhite } from "../components/icons/cart-icon-white";
-import { FormatPrice } from "../utils/format-price";
+import { GoBackBtn } from "../../components/go-back-btn";
+import { CartIconWhite } from "../../components/icons/cart-icon-white";
+import { FormatPrice } from "../../utils/format-price";
 import { useProduct } from "@/hooks/useProduct";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { Product } from "@/types/product";
+import { useGalleryContext } from "@/hooks/useGalleryContext";
+
 
 
 const MainContainer = styled.div`
@@ -117,24 +117,24 @@ const AddToCartBtn = styled.button`
 `
 
 
-export default function ProductPage({searchParams}: {searchParams: {id: string}}){
-    const product = useProduct(searchParams.id);
-    const {cartItems, updateLocalStorage} = useLocalStorage<Product[]>('cart-items', []);
+export default function ProductPage({params}: {params: {id: string}}){
+    const product = useProduct(params.id);
+    const {cartItems, updateLocalStorage} = useGalleryContext();
 
     const handleAddToCart = () => {
         if(cartItems && product){
-            let productIndex = cartItems.findIndex(((item: {id: string}) => item.id === searchParams.id));
+            let productIndex = cartItems.findIndex(((item: {id: string}) => item.id === params.id));
             if(productIndex === -1){
-                cartItems.push({...product, quantity: 1, id: searchParams.id});
-                updateLocalStorage(cartItems);
+                cartItems.push({...product, quantity: 1, id: params.id});
+                updateLocalStorage([...cartItems]);
             }
             else{
                 cartItems[productIndex].quantity = 1 + (cartItems[productIndex].quantity ?? 0);
-                updateLocalStorage(cartItems);
+                updateLocalStorage([...cartItems]);
             }
         }
         else if(product){
-            updateLocalStorage([{...product, quantity: 1, id: searchParams.id}]);
+            updateLocalStorage([{...product, quantity: 1, id: params.id}]);
         }
     }
     return (

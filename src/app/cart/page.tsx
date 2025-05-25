@@ -8,6 +8,7 @@ import { ProductCartCard } from "../components/product-cart-card";
 import { ProductSummary } from "../components/product-summary";
 import { Product } from "@/types/product";
 import { useRouter } from "next/navigation";
+import { useGalleryContext } from "@/hooks/useGalleryContext";
 
 
 const PageContainer = styled.div`
@@ -43,7 +44,7 @@ const ListContainer = styled.div`
 `
 export default function CartPage(){
     const router = useRouter();
-    const {cartItems, updateLocalStorage} = useLocalStorage<Product[]>('cart-items', []);
+    const {cartItems, updateLocalStorage} = useGalleryContext();
     const handleDelete = (id: string) => {
         let newValue = cartItems.filter(item => item.id !== id);
         updateLocalStorage(newValue);

@@ -51,7 +51,7 @@ const ProductPrice = styled.p`
 export function GalleryCard(props: GalleryCardProps){
     const router = useRouter();
     const handleNavigate = (id: string) => {
-        router.push('/product?id=' + id)
+        router.push('/product/' + id)
     };
     return( 
         <GalleryCardContainer>
