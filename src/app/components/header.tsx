@@ -11,44 +11,26 @@ const TagHeader = styled.header`
   display: flex;
   position: fixed;
   top: 0;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 100vw;
   background-color: white;
   z-index: 999;
   box-sizing: border-box;
-  padding: 1em;
+  padding: max(5px, .3%) 5%;
   overflow: hidden;
   gap: 1em;
-  flex-direction: column;
-  min-width: 500px;
+  flex-direction: row;
   border-bottom: 1px solid var(--border-color);
   h1 {
-    font-size: 1.5rem;
+    font-size: max(5vw, 25px);
     color: #5d5d6d;
     margin: 0;
-
-    @media (min-width: ${(props) => props.theme.DesktopBreakpoint}) {
-      font-size: 3rem;
-    }
   }
   a {
     text-decoration: none;
     color: inherit;
-  }
-  @media (min-width: ${(props) => props.theme.TabletBreakpoint}) {
-    flex-direction: row;
-    padding: 1em 5em 1em 7em;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  @media (min-width: ${(props) => props.theme.DesktopBreakpoint}) {
-    flex-direction: row;
-    padding: 0 5em 0 7em;
-    justify-content: space-between;
-    align-items: center;
   }
 `;
 const RightContainer = styled.div`
@@ -59,25 +41,50 @@ const RightContainer = styled.div`
 `;
 const InputContainer = styled.div`
   display: flex;
-  position: relative;
+  position: relative; 
 
   svg {
     position: absolute;
-    right: 1em;
+    left: 1em;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  *:focus-within  {
+    svg{
+        display: none;
+
+    }
+  }
+
+  @media (min-width: ${props => props.theme.TabletBreakpoint}){
+    svg {
+      position: absolute;
+      right: 1em;
+      left: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 `;
 
 const CustomInput = styled.input`
-  width: 22em;
+  width: 40px;
   height: 3em;
   border-radius: 0.6em;
   border: none;
-  background-color: #f3f5f6;
+  background-color: transparent;
   padding: 0 1em;
   font-size: 0.9em;
   font-family: inherit;
+
+  @media (min-width: ${props => props.theme.TabletBreakpoint}){
+    width: min(25vw, 240px);
+    background-color: #f3f5f6;
+
+    
+    
+  }
 `;
 
 const CartIconContainer = styled.div`
@@ -108,6 +115,17 @@ const CartIconContainer = styled.div`
 export function Header() {
   const { search, setSearch, cartItems } = useGalleryContext();
   const router = useRouter();
+
+  const search_input = document.querySelector('#search_input')
+  const media_query = matchMedia('(min-width: 768px)');
+  function toggle_placeholder(mq: MediaQueryListEvent){
+    if (search_input){
+      mq.matches ? search_input.setAttribute('placeholder', 'Looking for something?') 
+      : search_input.removeAttribute('placeholder');
+    }
+    
+  }
+  media_query.addEventListener('change', toggle_placeholder);
   return (
     <TagHeader>
       <h1 className={sairaOne.className}>
@@ -120,7 +138,8 @@ export function Header() {
               setSearch(e.target.value)
             }
             placeholder="Looking for something?"
-            value={search}></CustomInput>
+            value={search}
+            id="search_input"></CustomInput>
           <SearchIcon />
         </InputContainer>
         <CartIconContainer

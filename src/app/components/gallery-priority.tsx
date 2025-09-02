@@ -19,7 +19,7 @@ const PriorityButton = styled.button`
     gap: 8px;
     cursor: pointer;
     position: relative;
-    margin: auto;
+    padding: 0;
     color: var(--text-dark);
 `
 const PriorityList = styled.ul`
@@ -40,12 +40,10 @@ const PriorityList = styled.ul`
         font-family: inherit;
         font-size: 14px;
         margin: .3em 1.5em;
-        width: 10em;
     }
 `
 const PriorityListContainer = styled.div`
     position: relative;
-    width: 10em;
     align-items: center;
     justify-content: end;
     

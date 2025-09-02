@@ -3,11 +3,7 @@
 import styled from "styled-components";
 
 export const DefaultPageLayout = styled.div`
-    padding: 8em 2em 0 2em;
+    padding: max(10%, 50px) 5% 0 5%;
     min-height: 90vh;
     background-color: var(--bg-primary);
-
-    @media (min-width: ${props => props.theme.TabletBreakpoint}){
-        padding: 5em 4em 0 7em;
-    }
 `

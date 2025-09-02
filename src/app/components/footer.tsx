@@ -23,15 +23,16 @@ const FooterTag = styled.section`
 
 export function Footer(){
     const router = useRouter()
+    const year = new Date().getFullYear();
     
     return(
         <FooterTag>
             <h3>ABOUT US</h3>
-            <p>We are the best online store for computer parts!</p>
+            <p>We are the best online store for tees and mugs!</p>
             <SocialMedia/>
             <p>
                 <a href="/contact">Contact us</a><br/>
-                © 2024 Copyright: all rights reserved
+                © {year} Copyright: all rights reserved
             </p>
         </FooterTag>
     )
