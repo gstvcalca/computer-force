@@ -12,7 +12,7 @@ export function useLocalStorage(key: string, initialValue: Product[]) {
       let value = localStorage.getItem(key);
       if (value) setValue(JSON.parse(value));
     }
-  }, []);
+  }, [window]);
 
   function updateLocalStorage(newValue: Product[]) {
     setValue(newValue);
