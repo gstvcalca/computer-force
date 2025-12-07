@@ -6,6 +6,7 @@ import { CartIcon } from "./icons/cart-icon";
 import { useGalleryContext } from "@/hooks/useGalleryContext";
 import { useRouter } from "next/navigation";
 import { sairaOne } from "../layout";
+import { useState } from "react";
 
 const TagHeader = styled.header`
   display: flex;
@@ -110,17 +111,9 @@ const CartIconContainer = styled.div`
 export function Header() {
   const { search, setSearch, cartItems } = useGalleryContext();
   const router = useRouter();
+  const [currentPlaceholder, setPlaceholder] = useState('');
 
-  const search_input = document.querySelector('#search_input')
-  const media_query = matchMedia('(min-width: 768px)');
-  function toggle_placeholder(mq: MediaQueryListEvent){
-    if (search_input){
-      mq.matches ? search_input.setAttribute('placeholder', 'Looking for something?') 
-      : search_input.removeAttribute('placeholder');
-    }
-    
-  }
-  media_query.addEventListener('change', toggle_placeholder);
+
   return (
     <TagHeader>
       <h1 className={sairaOne.className}>
@@ -132,7 +125,7 @@ export function Header() {
             onChange={(e: { target: { value: string } }) =>
               setSearch(e.target.value)
             }
-            placeholder="Looking for something?"
+            placeholder={currentPlaceholder}
             value={search}
             id="search_input"></CustomInput>
           <SearchIcon />

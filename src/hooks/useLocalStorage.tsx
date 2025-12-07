@@ -1,3 +1,5 @@
+"use client"
+
 import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 
@@ -10,7 +12,7 @@ export function useLocalStorage(key: string, initialValue: Product[]) {
       let value = localStorage.getItem(key);
       if (value) setValue(JSON.parse(value));
     }
-  }, [window]);
+  }, []);
 
   function updateLocalStorage(newValue: Product[]) {
     setValue(newValue);

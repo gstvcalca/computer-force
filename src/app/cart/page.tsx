@@ -1,12 +1,10 @@
 "use client"
 
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { GoBackBtn } from "../components/go-back-btn";
 import styled from "styled-components";
 import { FormatPrice } from './../utils/format-price';
 import { ProductCartCard } from "../components/product-cart-card";
 import { ProductSummary } from "../components/product-summary";
-import { Product } from "@/types/product";
 import { useRouter } from "next/navigation";
 import { useGalleryContext } from "@/hooks/useGalleryContext";
 
