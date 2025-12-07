@@ -1,4 +1,3 @@
-"use client"
 
 import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
