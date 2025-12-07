@@ -40,7 +40,7 @@ const RightContainer = styled.div`
   font-family: "saira", sans-serif;
 `;
 const InputContainer = styled.div`
-  display: flex;
+  display: none;
   position: relative; 
 
   svg {
@@ -58,6 +58,7 @@ const InputContainer = styled.div`
   }
 
   @media (min-width: ${props => props.theme.TabletBreakpoint}){
+    display: flex;
     svg {
       position: absolute;
       right: 1em;
@@ -69,7 +70,7 @@ const InputContainer = styled.div`
 `;
 
 const CustomInput = styled.input`
-  width: 40px;
+  width: min(25vw, 240px);
   height: 3em;
   border-radius: 0.6em;
   border: none;
@@ -77,14 +78,8 @@ const CustomInput = styled.input`
   padding: 0 1em;
   font-size: 0.9em;
   font-family: inherit;
-
-  @media (min-width: ${props => props.theme.TabletBreakpoint}){
-    width: min(25vw, 240px);
-    background-color: #f3f5f6;
-
-    
-    
-  }
+  display: flex;
+  background-color: #f3f5f6;
 `;
 
 const CartIconContainer = styled.div`

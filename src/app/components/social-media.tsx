@@ -10,14 +10,18 @@ const ThisButton = styled.button`
     border: none;
     background: none;
     cursor: pointer;
+    overflow: clip;
+
+    svg {
+        height: 20px;
+        width: 20px;
+    }
+
 `
 const SocialContainer = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: fit-content;
-    gap: 0 4em;
-    margin: auto;
+    gap: 0 1vw;
 `
 export function SocialMedia(){
     const router = useRouter();
