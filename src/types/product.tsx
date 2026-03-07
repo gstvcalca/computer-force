@@ -12,7 +12,3 @@ export interface ProductFetchResponse {
     // GraphIQL always enclosure its response in a data object
     data: {allProducts: Product[]}
 }
-
-export interface SingleFetchResponse {
-    data: {Product: Product}
-}

@@ -3,6 +3,9 @@
 import { useProducts } from "@/hooks/useProducts"
 import { GalleryCard } from "./gallery-card"
 import styled from "styled-components"
+import { useEffect, useState } from "react";
+import { ProductFetchResponse } from "@/types/product";
+import { AxiosResponse } from "axios";
 
 
 const GalleryContainer = styled.div`
@@ -18,20 +21,24 @@ const GalleryContainer = styled.div`
         justify-content: space-between;
     }
 `
+
+
 export function GalleryList(){
-    const {product} = useProducts();
+    const data = useProducts();
+
+    console.log(data);
     return(
-        <GalleryContainer>
-            {product?.map((item) => 
-            <GalleryCard
-                name={item.name}
-                image_url={item.image_url}
-                price_in_cents={item.price_in_cents}
-                id={item.id}
-                key={item.id}
-                description={item.description}
-                category={item.category}/>
-            )}
-        </GalleryContainer>
-    )
+    <GalleryContainer>
+        {data?.allProducts.map((item) => 
+        <GalleryCard
+            name={item.name}
+            image_url={item.image_url}
+            price_in_cents={item.price_in_cents}
+            id={item.id}
+            key={item.id}
+            description={item.description}
+            category={item.category}/>
+        )}
+    </GalleryContainer>)
 }
+    
